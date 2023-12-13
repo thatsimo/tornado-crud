@@ -40,23 +40,25 @@ class StudentHandler(tornado.web.RequestHandler):
         self.set_status(201)
         return self.write(created_student)
 
-    async def put(self, student_id):
+    @coroutine
+    def put(self, student_id):
         student = tornado.escape.json_decode(self.request.body)
-        await self.settings["db"]["students"].update_one(
+        yield self.settings["db"]["students"].update_one(
             {"_id": student_id}, {"$set": student}
         )
 
-        if (
-            updated_student := await self.settings["db"]["students"].find_one(
+        updated_student = yield self.settings["db"]["students"].find_one(
                 {"_id": student_id}
             )
-        ) is not None:
+        
+        if updated_student is not None:
             return self.write(updated_student)
 
         raise tornado.web.HTTPError(404)
 
-    async def delete(self, student_id):
-        delete_result = await db["students"].delete_one({"_id": student_id})
+    @coroutine
+    def delete(self, student_id):
+        delete_result = yield db["students"].delete_one({"_id": student_id})
 
         if delete_result.deleted_count == 1:
             self.set_status(204)
