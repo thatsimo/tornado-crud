@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "6b5e5d00-8dcd-4ed1-9b8c-194d216b13a6",
+		"name": "tornado-crud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18050986"
+	},
+	"item": [
+		{
+			"name": "create_student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"simone\",\n    \"task\": \"math\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/students",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "read_student_by_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/students/65709289cf3dc853eeff5e92",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"students",
+						"65709289cf3dc853eeff5e92"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_student_by_id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"task\": \"history\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/students/657085360588820cc90b18d6",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"students",
+						"657085360588820cc90b18d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_student_by_id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/students/657083e80588820cc90b18d5",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"students",
+						"657083e80588820cc90b18d5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "read_students",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/students",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8888",
+			"type": "string"
+		}
+	]
+}
